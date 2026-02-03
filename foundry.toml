@@ -1,0 +1,23 @@
+[profile.default]
+src = "contracts"      # 指向 Hardhat 的合约目录
+out = "out"
+libs = ["node_modules", "lib"]  # 关键：加上 node_modules
+script = "script"
+test = "test"
+fs_permissions = [{ access = "read", path = "./" }]
+via_ir = true          # 启用 IR 编译以避免 "Stack too deep" 错误
+optimizer = true
+optimizer_runs = 200
+solc = "0.8.24"        # 🔧 与 Hardhat 统一版本！
+evm_version = "shanghai"  # 与 Hardhat 统一
+
+remappings = [
+    "@openzeppelin/=node_modules/@openzeppelin/",
+    "forge-std/=lib/forge-std/src/",
+    "hardhat/=node_modules/hardhat/",
+]
+
+[etherscan]
+mantle-sepolia = { key = "BPKNW8APJQBHHENTNH2221VSJA4IPH7RUN" }
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
